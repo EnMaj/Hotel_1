@@ -73,7 +73,8 @@ if __name__ == '__main__':
             for apartment in hotel:
                 busy_flag = False
                 food_cost = 0
-                if apartment.number == int(num_people):
+                if apartment.number == int(num_people)\
+                        and max_money >= apartment.cost(apartment.tp, apartment.comfort):
                     for element in apartment.busy:
                         if element[0] < busy_date < element[1]:
                             busy_flag = True
@@ -82,11 +83,12 @@ if __name__ == '__main__':
                         food_cost = max_money - apartment.cost(apartment.tp, apartment.comfort)
                         food_price = apartment.dietary(food_cost)
                 if not busy_flag:
-                    if apartment.number == int(num_people) + 1:
+                    if apartment.number == int(num_people) + 1\
+                            and max_money >= apartment.cost(apartment.tp, apartment.comfort):
                         for element in apartment.busy:
                             if element[0] < busy_date < element[1]:
                                 busy_flag = True
                         if not busy_flag:
                             apartment.booking(busy_date, days)
-                            food_cost = max_money - apartment.cost(apartment.tp, apartment.comfort)
+                            food_cost = max_money - 0.7 * apartment.cost(apartment.tp, apartment.comfort)
                             food_price = apartment.dietary(food_cost)
