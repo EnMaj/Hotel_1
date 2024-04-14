@@ -84,11 +84,11 @@ if __name__ == '__main__':
                 date_now = int(booking_date[:2])
                 print(f'{ru_local.NUMBER_BUSY_ROOM} {busy_room_number}\n'
                       f'{ru_local.NUMBER_FREE_ROOM} {len(hotel) - busy_room_number}\n'
-                      f'{ru_local.NUMBER_ONE_PERSON} {round(categories_busy[ru_local.ONE_PERSON]* 100 / 9, 2)}\n'
+                      f'{ru_local.NUMBER_ONE_PERSON} {round(categories_busy[ru_local.ONE_PERSON] * 100 / 9, 2)}\n'
                       f'{ru_local.NUMBER_TWO_PERSONS} {round(categories_busy[ru_local.TWO_PERSONS] * 100 / 6, 2)}\n'
                       f'{ru_local.NUMBER_JUNIOR_SUITE} {round(categories_busy[ru_local.JUNIOR_SUITE] * 100 / 5, 2)}\n'
                       f'{ru_local.NUMBER_LUXE} {round(categories_busy[ru_local.LUXE] * 100 / 4, 2)}\n'
-                      f'{ru_local.HOTEL_BUSY} {round(busy_room_number*100/len(hotel),2)}\n'
+                      f'{ru_local.HOTEL_BUSY} {round(busy_room_number * 100 / len(hotel), 2)}\n'
                       f'{ru_local.PROFIT} {profit}\n'
                       f'{ru_local.MISSED_PROFIT} {missed_profit}\n')
                 busy_room_number = 0
