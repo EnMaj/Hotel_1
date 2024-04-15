@@ -49,15 +49,14 @@ class HotelRoom:
 
 if __name__ == '__main__':
     hotel = []
+
     with open('fund.txt', 'r', encoding='utf8') as num_info:
         for ptr in num_info:
             hotel.append(HotelRoom(*ptr.split()))
-    for i in range(len(hotel) - 1):
-        for j in range(len(hotel) - 1 - i):
-            if hotel[j].cost(hotel[j].tp, hotel[j].comfort) > hotel[j + 1].cost(hotel[j].tp, hotel[j].comfort):
-                hotel[j], hotel[j + 1] = hotel[j + 1], hotel[j]
 
-    with open('booking.txt', 'r', encoding='utf8') as book:
+    hotel = sorted(hotel, key=lambda x: x.cost(x.tp, x.comfort), reverse=True)
+
+    with (open('booking.txt', 'r', encoding='utf8') as book):
         date_now = 1
         busy_room_number = 0
         categories_busy = {
@@ -68,6 +67,7 @@ if __name__ == '__main__':
         }
         profit = 0
         missed_profit = 0
+
         for info in book:
             booking_date, s_name, f_name, surname, num_people, busy_date, days, max_money = info.split()
             num_people = float(num_people)
@@ -76,12 +76,12 @@ if __name__ == '__main__':
 
             if int(booking_date[:2]) != date_now:
                 for room in hotel:
-                    # print(room.busy)
                     for date in room.busy:
                         if date[0] <= date_now <= date[1]:
                             busy_room_number += 1
                             categories_busy[room.tp] += 1
                 date_now = int(booking_date[:2])
+
                 print(f'{ru_local.NUMBER_BUSY_ROOM} {busy_room_number}\n'
                       f'{ru_local.NUMBER_FREE_ROOM} {len(hotel) - busy_room_number}\n'
                       f'{ru_local.NUMBER_ONE_PERSON} {round(categories_busy[ru_local.ONE_PERSON] * 100 / 9, 2)}\n'
@@ -91,6 +91,7 @@ if __name__ == '__main__':
                       f'{ru_local.HOTEL_BUSY} {round(busy_room_number * 100 / len(hotel), 2)}\n'
                       f'{ru_local.PROFIT} {profit}\n'
                       f'{ru_local.MISSED_PROFIT} {missed_profit}\n')
+
                 busy_room_number = 0
                 categories_busy = {
                     ru_local.ONE_PERSON: 0,
@@ -103,6 +104,7 @@ if __name__ == '__main__':
 
             if int(num_people) > 6:
                 continue
+
             force_major = random.randint(0, 3)
             booking_flag = False
             for apartment in hotel:
