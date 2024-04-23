@@ -69,6 +69,7 @@ def calculate_profits(is_sell, missed_profit, profit, num_people, max_money, hot
 
                 if force_major == 0:
                     missed_profit += final_price
+                    booking_flag = True
                     break
 
                 apartment.booking(busy_date, days)
