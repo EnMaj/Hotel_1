@@ -145,6 +145,6 @@ if __name__ == '__main__':
                                                                            max_money, hotel, booking_flag)
 
             if not booking_flag:
-                missed_profit, profit, booking_flag, hotel = calculate_profits(True, missed_profit, profit, num_people,
-                                                                               max_money,
+                missed_profit, profit, booking_flag, hotel = calculate_profits(True, missed_profit, profit,
+                                                                               num_people, max_money,
                                                                                hotel, booking_flag)
