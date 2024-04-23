@@ -115,6 +115,7 @@ if __name__ == '__main__':
                             categories_busy[room.tp] += 1
                             break
 
+                print(f'{ru_local.DATA_NOW} {str(date_now) + booking_date[2:]}')
                 date_now = int(booking_date[:2])
                 print(f'{ru_local.NUMBER_BUSY_ROOM} {busy_room_number}\n'
                       f'{ru_local.NUMBER_FREE_ROOM} {len(hotel) - busy_room_number}\n'
